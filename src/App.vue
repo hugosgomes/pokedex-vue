@@ -1,16 +1,23 @@
 <template>
   <div class="container">
     <h1>Pokedex</h1>
-    <section v-for="pokemon in pokemons" :key="pokemon.name">
-      {{ pokemon.name }}
-    </section>
+    <Card
+      v-for="pokemon in pokemons"
+      :key="pokemon.name"
+      :name="pokemon.name"
+    />
   </div>
 </template>
 
 <script>
 import pokemonApi from "./services/api";
+import Card from "./components/Card";
+
 export default {
   name: "App",
+  components: {
+    Card,
+  },
   data: function() {
     return {
       pokemons: [],
@@ -19,7 +26,7 @@ export default {
   beforeMount() {
     pokemonApi
       .getPokemons()
-      .then((response) => (this.pokemons = response.results));
+      .then((pokemons) => (this.pokemons = pokemons.results));
   },
 };
 </script>
