@@ -1,11 +1,14 @@
 <template>
   <div class="container">
     <h1>Pokedex</h1>
-    <Card
-      v-for="pokemon in pokemons"
-      :key="pokemon.name"
-      :name="pokemon.name"
-    />
+    <section>
+      <Card
+        v-for="pokemon in pokemons"
+        :key="pokemon.name"
+        :name="pokemon.name"
+        :url="pokemon.url"
+      />
+    </section>
   </div>
 </template>
 
@@ -40,8 +43,6 @@ export default {
 }
 
 #app {
-  height: 100vh;
-  width: 100%;
   background: linear-gradient(to right, rgb(197, 230, 236), rgb(239, 187, 230));
   margin: 0;
   font-family: rubik;
@@ -49,5 +50,12 @@ export default {
 
 .container {
   padding: 20px;
+}
+
+.container section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 17px;
 }
 </style>

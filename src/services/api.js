@@ -10,6 +10,11 @@ const pokemonApi = {
     const { data } = response;
     return data;
   },
+  getPokemon: async (url) => {
+    const response = await api.get(url);
+    const { data } = response;
+    return data;
+  },
 };
 
 export default pokemonApi;

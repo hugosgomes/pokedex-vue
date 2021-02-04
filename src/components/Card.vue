@@ -1,17 +1,35 @@
 <template>
-  <div>{{ name }}</div>
+  <article :class="'card ' + type">{{ name }}</article>
 </template>
 
 <script>
+import pokemonApi from "../services/api";
+
 export default {
   name: "Card",
   props: {
     name: String,
+    url: String,
+  },
+  data: function() {
+    return {
+      type: "",
+    };
+  },
+  beforeMount() {
+    pokemonApi
+      .getPokemon(this.url)
+      .then((pokemon) => (this.type = pokemon.types[0].type.name));
   },
 };
 </script>
 
 <style scoped>
+.card {
+  width: 230px;
+  height: 245px;
+}
+
 .steel {
   background-color: #f4f4f4;
 }
