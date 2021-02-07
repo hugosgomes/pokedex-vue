@@ -1,7 +1,7 @@
 <template>
   <article :class="'card ' + type">
     <h1>{{ id }}. {{ name }}</h1>
-    <p>{{ type }}</p>
+    <p>{{ typesString }}</p>
     <img class="pokemon-image" :src="urlImage" :alt="name" />
   </article>
 </template>
@@ -19,6 +19,7 @@ export default {
       id: 0,
       name: "",
       type: "",
+      typesString: "",
       urlImage: "",
     };
   },
@@ -27,7 +28,8 @@ export default {
       const { id, name, types } = pokemon;
       this.id = id;
       this.name = this.capitalize(name);
-      this.type = this.getTypesString(types);
+      this.type = this.getType(types);
+      this.typesString = this.getTypesString(types);
       this.urlImage = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
     });
   },
@@ -37,6 +39,9 @@ export default {
     },
     getTypesString(typesNames) {
       return typesNames.map((types) => types.type.name).join(" | ");
+    },
+    getType(typesNames) {
+      return typesNames[0].type.name;
     },
   },
 };

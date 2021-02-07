@@ -53,9 +53,9 @@ export default {
 
 .container section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  row-gap: 17px;
+  gap: 17px;
 }
 
 .container h1 {
