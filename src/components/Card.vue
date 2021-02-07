@@ -1,5 +1,9 @@
 <template>
-  <article :class="'card ' + type">{{ name }}</article>
+  <article :class="'card ' + type">
+    <h1>{{ id }}. {{ name }}</h1>
+    <p>{{ type }}</p>
+    <img class="pokemon-image" :src="urlImage" :alt="name" />
+  </article>
 </template>
 
 <script>
@@ -8,18 +12,32 @@ import pokemonApi from "../services/api";
 export default {
   name: "Card",
   props: {
-    name: String,
     url: String,
   },
   data: function() {
     return {
+      id: 0,
+      name: "",
       type: "",
+      urlImage: "",
     };
   },
   beforeMount() {
-    pokemonApi
-      .getPokemon(this.url)
-      .then((pokemon) => (this.type = pokemon.types[0].type.name));
+    pokemonApi.getPokemon(this.url).then((pokemon) => {
+      const { id, name, types } = pokemon;
+      this.id = id;
+      this.name = this.capitalize(name);
+      this.type = this.getTypesString(types);
+      this.urlImage = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
+    });
+  },
+  methods: {
+    capitalize(name) {
+      return name.replace(/\b\w/g, (l) => l.toUpperCase());
+    },
+    getTypesString(typesNames) {
+      return typesNames.map((types) => types.type.name).join(" | ");
+    },
   },
 };
 </script>
@@ -28,6 +46,24 @@ export default {
 .card {
   width: 230px;
   height: 245px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.card p,
+.card h1 {
+  text-align: center;
+}
+
+.card p {
+  margin-bottom: 10px;
+}
+
+.pokemon-image {
+  height: 150px;
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
 }
 
 .steel {

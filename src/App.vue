@@ -5,7 +5,6 @@
       <Card
         v-for="pokemon in pokemons"
         :key="pokemon.name"
-        :name="pokemon.name"
         :url="pokemon.url"
       />
     </section>
@@ -57,5 +56,10 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   row-gap: 17px;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 </style>
