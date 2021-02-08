@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import pokemonApi from "../services/api";
+import pokemonApi from "../../services/api";
 
 export default {
   name: "Card",
@@ -38,7 +38,9 @@ export default {
       return name.replace(/\b\w/g, (l) => l.toUpperCase());
     },
     getTypesString(typesNames) {
-      return typesNames.map((types) => types.type.name).join(" | ");
+      return this.capitalize(
+        typesNames.map((types) => types.type.name).join(" | ")
+      );
     },
     getType(typesNames) {
       return typesNames[0].type.name;
@@ -53,11 +55,24 @@ export default {
   height: 245px;
   padding: 20px;
   border-radius: 20px;
+  box-shadow: 10px 10px 13px -7px #000000;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .pokemon-image {
+  transform: scale(1.1);
 }
 
 .card p,
 .card h1 {
   text-align: center;
+}
+
+.card h1 {
+  height: 5px;
 }
 
 .card p {
@@ -66,9 +81,9 @@ export default {
 
 .pokemon-image {
   height: 150px;
-  transform: translateX(-50%);
-  left: 50%;
-  position: relative;
+  display: block;
+  margin: auto;
+  transition: transform 0.3s;
 }
 
 .steel {
