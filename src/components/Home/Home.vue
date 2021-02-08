@@ -35,6 +35,7 @@ export default {
 
 <style>
 .container {
+  background: linear-gradient(to right, rgb(197, 230, 236), rgb(239, 187, 230));
   padding: 20px;
 }
 

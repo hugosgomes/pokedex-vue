@@ -1,9 +1,11 @@
 <template>
-  <article :class="'card ' + type">
-    <h1>{{ id }}. {{ name }}</h1>
-    <p>{{ typesString }}</p>
-    <img class="pokemon-image" :src="urlImage" :alt="name" />
-  </article>
+  <router-link :to="{ path: '/pokemon/', params: { id: id } }">
+    <article :class="'card ' + type">
+      <h1>{{ id }}. {{ name }}</h1>
+      <p>{{ typesString }}</p>
+      <img class="pokemon-image" :src="urlImage" :alt="name" />
+    </article>
+  </router-link>
 </template>
 
 <script>
