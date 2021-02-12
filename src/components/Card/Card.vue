@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ path: '/pokemon/', params: { id: id } }">
+  <router-link :to="`/pokemon/${id}`">
     <article :class="'card ' + type">
       <h1>{{ id }}. {{ name }}</h1>
       <p>{{ typesString }}</p>
@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
+
 .card {
   width: 230px;
   height: 245px;
