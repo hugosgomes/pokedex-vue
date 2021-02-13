@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="`/pokemon/${id}`">
+  <router-link :to="{ name: 'pokemon', params: { id: id, type: type } }">
     <article :class="'card ' + type">
       <h1>{{ id }}. {{ name }}</h1>
       <p>{{ typesString }}</p>
