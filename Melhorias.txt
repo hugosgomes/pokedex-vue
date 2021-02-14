@@ -1,0 +1,4 @@
+-Verificar se todos os tipos possuem background.
+-Inserir input para ir para qualquer página.
+-Procurar pokemons pelo nome.
+-Inserir movimentos na página de habilidades.

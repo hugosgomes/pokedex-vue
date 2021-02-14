@@ -45,29 +45,25 @@ export default {
     };
   },
   beforeMount() {
-    pokemonApi
-      .getPokemons()
-      .then((pokemons) => (this.pokemons = pokemons.results));
+    this.setPage(this.page);
   },
   methods: {
     setOffset(page) {
       if (page === 1) {
-        return 30;
+        return 1;
       } else {
         return (page - 1) * 30;
       }
     },
     nextPage() {
-      const offset = this.setOffset(++this.page);
-      this.setPage(offset);
+      this.setPage(++this.page);
     },
     previusPage() {
-      const offset = this.setOffset(--this.page);
-      this.setPage(offset);
+      this.setPage(--this.page);
     },
-    setPage(offset) {
+    setPage(page) {
+      const offset = this.setOffset(page);
       this.pokemons = [];
-      console.log("offset", offset);
       pokemonApi
         .getPokemons(offset)
         .then((pokemons) => (this.pokemons = pokemons.results));
