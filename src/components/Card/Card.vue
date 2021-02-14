@@ -33,7 +33,7 @@ export default {
       this.name = this.capitalize(name);
       this.type = this.getType(types);
       this.typesString = this.getTypesString(types);
-      this.urlImage = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
+      this.urlImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
       this.pokemon = pokemon;
     });
   },
@@ -63,7 +63,7 @@ a {
   height: 245px;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 10px 10px 13px -7px #000000;
+  box-shadow: 10px 10px 13px -7px #000000, -10px -10px 13px -7px #000000;
 }
 
 .card:hover {
@@ -81,6 +81,8 @@ a {
 
 .card h1 {
   height: 5px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .card p {

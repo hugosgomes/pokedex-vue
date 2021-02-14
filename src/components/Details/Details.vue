@@ -1,6 +1,6 @@
 <template>
   <div :class="`container ${$route.params.type}`">
-    <button @click="back">
+    <button class="btn-back" @click="back">
       <i class="fas fa-arrow-left"></i>
     </button>
     <h1>{{ $route.params.name }}</h1>
@@ -34,6 +34,10 @@ export default {
   width: 100%;
 }
 
+h1 {
+  text-align: center;
+}
+
 p {
   text-align: center;
   font-size: 20px;
@@ -59,6 +63,20 @@ button {
 button:hover {
   cursor: pointer;
   color: orangered;
+}
+
+@media screen and (max-width: 600px) {
+  .img {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.btn-back {
+  padding: 10px 0 0 10px;
 }
 
 .container.grass {
