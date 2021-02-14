@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'pokemon', params: { id: id, type: type } }">
+  <router-link :to="{ name: 'pokemon', params: { id, name, type, urlImage } }">
     <article :class="'card ' + type">
       <h1>{{ id }}. {{ name }}</h1>
       <p>{{ typesString }}</p>
@@ -23,6 +23,7 @@ export default {
       type: "",
       typesString: "",
       urlImage: "",
+      pokemon: null,
     };
   },
   beforeMount() {
@@ -33,6 +34,7 @@ export default {
       this.type = this.getType(types);
       this.typesString = this.getTypesString(types);
       this.urlImage = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
+      this.pokemon = pokemon;
     });
   },
   methods: {
