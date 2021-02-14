@@ -50,7 +50,7 @@ export default {
   methods: {
     setOffset(page) {
       if (page === 1) {
-        return 1;
+        return 0;
       } else {
         return (page - 1) * 30;
       }
