@@ -15,6 +15,7 @@
         v-for="pokemon in pokemons"
         :key="pokemon.name"
         :url="pokemon.url"
+        :currentPage="page"
       />
     </section>
     <div class="pages-bottom">
@@ -45,6 +46,7 @@ export default {
     };
   },
   beforeMount() {
+    this.verifyCurrentPage();
     this.setPage(this.page);
   },
   methods: {
@@ -63,6 +65,9 @@ export default {
       pokemonApi
         .getPokemons(offset)
         .then((pokemons) => (this.pokemons = pokemons.results));
+    },
+    verifyCurrentPage() {
+      this.page = this.$route.params.currentPage ?? 1;
     },
   },
 };

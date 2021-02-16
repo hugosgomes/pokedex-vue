@@ -2,3 +2,6 @@
 -Inserir input para ir para qualquer página.
 -Procurar pokemons pelo nome.
 -Inserir movimentos na página de habilidades.
+
+Bugs:
+-Altura da div da imagem no details.

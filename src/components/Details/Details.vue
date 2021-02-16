@@ -1,8 +1,12 @@
 <template>
   <div :class="`container ${$route.params.type}`">
-    <button class="btn-back" @click="back">
-      <i class="fas fa-arrow-left"></i>
-    </button>
+    <router-link
+      :to="{ name: 'home', params: { currentPage: $route.params.currentPage } }"
+    >
+      <button class="btn-back">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+    </router-link>
     <h1>{{ $route.params.name }}</h1>
     <div class="img">
       <img :src="$route.params.urlImage" alt="" srcset="" />
@@ -19,11 +23,6 @@ export default {
       id: 0,
       type: "",
     };
-  },
-  methods: {
-    back() {
-      history.back();
-    },
   },
 };
 </script>

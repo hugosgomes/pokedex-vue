@@ -1,5 +1,7 @@
 <template>
-  <router-link :to="{ name: 'pokemon', params: { id, name, type, urlImage } }">
+  <router-link
+    :to="{ name: 'pokemon', params: { id, name, type, urlImage, currentPage } }"
+  >
     <article :class="'card ' + type">
       <h1>{{ id }}. {{ name }}</h1>
       <p>{{ typesString }}</p>
@@ -15,6 +17,7 @@ export default {
   name: "Card",
   props: {
     url: String,
+    currentPage: Number,
   },
   data: function() {
     return {
