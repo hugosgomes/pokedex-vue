@@ -42,7 +42,7 @@ export default {
   data: () => {
     return {
       pokemons: [],
-      page: 1,
+      page: 0,
     };
   },
   beforeMount() {
@@ -85,6 +85,7 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   gap: 17px;
+  min-height: 100vh;
 }
 
 .pages,
