@@ -5,8 +5,8 @@ const api = axios.create({
 });
 
 const pokemonApi = {
-  getPokemons: async (offset) => {
-    const response = await api.get(`/pokemon/?limit=30&offset=${offset}`);
+  getPokemons: async () => {
+    const response = await api.get(`/pokemon?offset=0&limit=1118`);
     const { data } = response;
     return data;
   },

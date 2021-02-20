@@ -17,7 +17,7 @@ export default {
   name: "Card",
   props: {
     url: String,
-    currentPage: Number,
+    currentPage: String,
   },
   data: function() {
     return {

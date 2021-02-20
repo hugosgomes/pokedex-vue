@@ -2,7 +2,7 @@
   <div class="container">
     <header>
       <h1>Pokedex</h1>
-      <div class="pages">
+      <div class="pages-top">
         <button @click="previusPage" :disabled="page === 1">
           <i class="fas fa-step-backward"></i>
         </button>
@@ -44,6 +44,7 @@ export default {
   data: () => {
     return {
       pokemons: [],
+      allPokemons: [],
       page: 0,
     };
   },
@@ -63,10 +64,18 @@ export default {
     },
     setPage(page) {
       const offset = this.setOffset(page);
+      if (this.allPokemons.length === 0) {
+        pokemonApi.getPokemons().then((pokemons) => {
+          this.allPokemons = pokemons.results;
+          this.setPokemons(offset);
+        });
+      } else {
+        this.setPokemons(offset);
+      }
+    },
+    setPokemons(offset) {
       this.pokemons = [];
-      pokemonApi
-        .getPokemons(offset)
-        .then((pokemons) => (this.pokemons = pokemons.results));
+      this.pokemons = this.allPokemons.slice(offset, offset + 30);
     },
     verifyCurrentPage() {
       this.page = this.$route.params.currentPage ?? 1;
