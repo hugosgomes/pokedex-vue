@@ -10,6 +10,13 @@
         <button @click="nextPage" :disabled="page === 38">
           <i class="fas fa-step-forward"></i>
         </button>
+        <input
+          type="text"
+          id="name"
+          placeholder="Pokemon Name"
+          v-model="name"
+          @keyup="setPage(1)"
+        />
       </div>
     </header>
     <section>
@@ -45,6 +52,8 @@ export default {
     return {
       pokemons: [],
       allPokemons: [],
+      filteredPokemons: [],
+      name: "",
       page: 0,
     };
   },
@@ -75,7 +84,21 @@ export default {
     },
     setPokemons(offset) {
       this.pokemons = [];
-      this.pokemons = this.allPokemons.slice(offset, offset + 30);
+      if (!this.name) {
+        this.filteredPokemons = [];
+        this.pokemons = this.allPokemons.slice(offset, offset + 30);
+      } else {
+        this.filterPokemon();
+        this.pokemons = this.filteredPokemons.slice(offset, offset + 30);
+      }
+    },
+    filterPokemon() {
+      this.page = this.filteredPokemons.length === 0 ? 1 : this.page;
+      this.filteredPokemons = this.allPokemons.filter(
+        (pokemon) =>
+          pokemon.name.toLowerCase().indexOf(this.name.toLowerCase()) > -1
+      );
+      console.log("filterPokemon", this.allPokemons);
     },
     verifyCurrentPage() {
       this.page = this.$route.params.currentPage ?? 1;

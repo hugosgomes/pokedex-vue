@@ -12,6 +12,10 @@
   min-height: 100vh;
 }
 
+.container section a {
+  max-height: 245px;
+}
+
 .pages-top,
 .pages-bottom {
   display: flex;
